@@ -1,0 +1,21 @@
+{
+  "name": "page_to_md",
+  "version": "1.0.0",
+  "description": "Firefox extension to save pages as Markdown",
+  "scripts": {
+    "clean": "rm -rf build/*",
+    "build": "pwd && bun build src/content.ts --outfile content.bob.bundle.js --target browser --external chrome --minify --sourcemap && bun build src/background.ts --outfile build/background.js --target browser --external chrome --minify --sourcemap"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "turndown": "^7.2.0"
+  },
+  "private": true,
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/bun": "latest",
+    "@types/chrome": "^0.1.1",
+    "@types/turndown": "^5.0.5"
+  }
+}

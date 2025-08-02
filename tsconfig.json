@@ -1,0 +1,13 @@
+// tsconfig.json
+// This configuration file is for TypeScript compilation in a browser extension project
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM"], // ✅ Add DOM here
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
+}
