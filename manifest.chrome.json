@@ -4,7 +4,8 @@
   "version": "1.0",
   "permissions": ["scripting", "activeTab", "downloads"],
   "action": {
-    "default_title": "Save as Markdown"
+    "default_title": "Save as Markdown",
+    "default_icon": "md-nice.png"
   },
   "background": {
     "service_worker": "background.js",

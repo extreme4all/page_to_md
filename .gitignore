@@ -2,3 +2,5 @@
 /node_modules/.gitkeep
 /*_build/*
 /*_build/.gitkeep
+/dist/*
+/dist/.gitkeep

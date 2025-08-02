@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "description": "Firefox extension to save pages as Markdown",
   "scripts": {
-    "clean": "rm -rf chrome_build/* firefox_build/*",
+    "_chrome_content": "bun build src/content.ts --outdir chrome_build --outfile content.bundle.js --target browser --external chrome --minify --sourcemap",
+    "_chrome_background": "bun build src/background.ts --outdir chrome_build --outfile background.js --target browser --external chrome --minify --sourcemap",
+    "_firefox_content": "bun build src/content.ts --outdir firefox_build --outfile content.bundle.js --target browser --external chrome --minify --sourcemap",
+    "_firefox_background": "bun build src/background.ts --outdir firefox_build --outfile background.js --target browser --external chrome --minify --sourcemap",
+    "_build_firefox": "bun run _firefox_content && bun run _firefox_background",
+    "_build_chrome": "bun run _chrome_content && bun run _chrome_background",
 
-    "build:chrome": "bun build src/content.ts --outdir chrome_build --outfile content.bundle.js --target browser --external chrome --minify --sourcemap && bun build src/background.ts --outdir chrome_build --outfile background.js --target browser --external chrome --minify --sourcemap && cp manifest.chrome.json chrome_build/manifest.json",
-    
-    "build:firefox": "bun build src/content.ts --outdir firefox_build --outfile content.bundle.js --target browser --external chrome --minify --sourcemap && bun build src/background.ts --outdir firefox_build --outfile background.js --target browser --external chrome --minify --sourcemap && cp manifest.firefox.json firefox_build/manifest.json",
-    
-    "build": "bun run build:chrome && bun run build:firefox"
+    "clean": "rm -rf chrome_build/* firefox_build/*",
+    "build:chrome": "bun run _build_chrome && cp manifest.chrome.json chrome_build/manifest.json && cp icons/md-nice.png chrome_build/",
+    "build:firefox": "bun run _build_firefox && cp manifest.firefox.json firefox_build/manifest.json && cp icons/md-nice.png firefox_build/",
+    "build": "bun run build:chrome && bun run build:firefox",
+    "package": "sh scripts/package.sh"
   },
-  "author": "",
+  "author": "extreme4all",
   "license": "ISC",
   "dependencies": {
     "turndown": "^7.2.0"
