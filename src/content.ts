@@ -29,9 +29,13 @@ filename = `${dateStr}_${filename}.md`;
 
 // add download link to the page & request download & remove it
 const a = document.createElement("a");
-a.href = url;
-a.download = filename;
-a.style.display = "none";
+const a_attributes = Object.entries({
+  href: url,
+  download: filename,
+  style: "display: none",
+});
+a_attributes.forEach(([k, v]) => a.setAttribute(k, v));
+
 document.body.appendChild(a);
 a.click();
 a.remove();
