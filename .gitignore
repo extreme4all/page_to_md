@@ -1,8 +1,4 @@
 /node_modules/*
 /node_modules/.gitkeep
-chrome_build/*
-chrome_build/.gitkeep
-firefox_build/*
-firefox_build/.gitkeep
-dist/*
-dist/.gitkeep
+/*_build/*
+/*_build/.gitkeep
