@@ -1,24 +1,12 @@
 # page_to_md
 
-To install dependencies:
 
+## build & package
+build for chrome & firefox (firefox_build/* & chrome_build/*)
 ```bash
-bun install
+bun run build
 ```
-
-To run:
-
+create zip file to package for chrome & firefox (dist/*)
 ```bash
-bun run index.js
+bun run package
 ```
-
-This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
-
-```sh
-bun build src/content.ts --outfile content.js --target browser --external chrome
-bun build src/background.ts --outfile background.js --target browser --external chrome
-```
-bun build src/content.ts --outfile content.js --target node --external chrome
-bun build src/background.ts --outfile background.js --target node --external chrome
-
-🔧 --external chrome tells Bun not to bundle the chrome.* extension APIs.
