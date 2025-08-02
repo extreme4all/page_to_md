@@ -4,7 +4,6 @@ const turndownService = new TurndownService();
 
 const title = document.title;
 
-// Format current date as YYYY-MM-DD
 const now = new Date();
 const dateStr = now.toISOString().slice(0, 10); // 'YYYY-MM-DD'
 
