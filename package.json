@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "Firefox extension to save pages as Markdown",
   "scripts": {
-    "clean": "rm -rf build/*",
-    "build": "pwd && bun build src/content.ts --outfile content.bob.bundle.js --target browser --external chrome --minify --sourcemap && bun build src/background.ts --outfile build/background.js --target browser --external chrome --minify --sourcemap"
+    "clean": "rm -rf chrome_build/* firefox_build/*",
+
+    "build:chrome": "bun build src/content.ts --outdir chrome_build --outfile content.bundle.js --target browser --external chrome --minify --sourcemap && bun build src/background.ts --outdir chrome_build --outfile background.js --target browser --external chrome --minify --sourcemap && cp manifest.chrome.json chrome_build/manifest.json",
+    
+    "build:firefox": "bun build src/content.ts --outdir firefox_build --outfile content.bundle.js --target browser --external chrome --minify --sourcemap && bun build src/background.ts --outdir firefox_build --outfile background.js --target browser --external chrome --minify --sourcemap && cp manifest.firefox.json firefox_build/manifest.json",
+    
+    "build": "bun run build:chrome && bun run build:firefox"
   },
   "author": "",
   "license": "ISC",

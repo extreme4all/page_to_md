@@ -7,7 +7,7 @@
     "default_title": "Save as Markdown"
   },
   "background": {
-    "service_worker": "build/background.js",
+    "service_worker": "background.js",
     "type": "module"
   },
   "host_permissions": ["<all_urls>"]
